@@ -63,7 +63,7 @@ struct ContentView: View {
                
                 
             }.frame(width: 900, height: 900)
-        }
+        }.frame(width:NSScreen.main?.frame.width,height:(NSScreen.main?.frame.height)!-370)
             
 
     }

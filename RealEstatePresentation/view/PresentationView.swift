@@ -14,14 +14,17 @@ struct PresentationView: View {
     @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     var body: some View {
         VStack{
-            Image(nsImage: NSImage(byReferencing: URL(filePath:files[index])))
-                .resizable()
+            VStack{
+                Image(nsImage: NSImage(byReferencing: URL(filePath:files[index])))
+                    .resizable()
+            }.frame(width:780,height:700,alignment: .center)
             VStack{
                 Text(agency.agency).font(.largeTitle).padding(15)
                 Text(agency.address).font(.largeTitle).padding(15)
                 Text(agency.phone).font(.largeTitle).padding(15)
             }
-        }.onReceive(timer, perform: { _ in
+        }.frame(width:NSScreen.main?.frame.width,height:(NSScreen.main?.frame.height)!-90)
+        .onReceive(timer, perform: { _ in
             debugPrint("agency=",agency)
             if index == files.count - 1{
                 index = 0
